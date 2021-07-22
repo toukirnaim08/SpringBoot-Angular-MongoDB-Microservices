@@ -1,32 +1,16 @@
-package school.solution.dbservices.model;
+package school.solution.dbservices.dto;
 
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-@Document(collection = "Notice")
-public class Notice {
-	@Id
-	private int id;
+public class NoticeDto {
 	private String createDate;
 	private String eventDate;
 	private String title;
 	private String description;
 
-	public Notice(int id, String createDate, String eventDate, String title, String description) {
-		this.id = id;
+	public NoticeDto(String createDate, String eventDate, String title, String description) {
 		this.createDate = createDate;
 		this.eventDate = eventDate;
 		this.title = title;
 		this.description = description;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getCreateDate() {
@@ -59,16 +43,5 @@ public class Notice {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	@Override
-	public String toString() {
-		return "Notice{" +
-				"id=" + id +
-				", createDate='" + createDate + '\'' +
-				", eventDate='" + eventDate + '\'' +
-				", title='" + title + '\'' +
-				", description='" + description + '\'' +
-				'}';
 	}
 }
