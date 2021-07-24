@@ -10,35 +10,23 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping("/course")
+@RequestMapping("api/v1//course")
 public class CourseController {
+
+	private String dbRoot = "http://DB-SERVICES/api/v1/db/";
 
 	@Autowired
 	private RestTemplate restTemplate;
 
+	@GetMapping("/save")
+	public String saveCourse(){
+		String course = restTemplate.getForObject(dbRoot+"savecourse", String.class);
+		return course;
+	}
+
 	@GetMapping("/all")
-	public String test(){
-		return "courseAPI";
-	}
-
-	@GetMapping("/testl")
-	public String test1(){
-
-		String teacherTemp = restTemplate.getForObject("http://TEACHER-SERVICES/teacher/all", String.class);
-		return teacherTemp;
-	}
-
-	@GetMapping("/test2")
-	public String test2(){
-
-		String teacherTemp = restTemplate.getForObject("http://DB-SERVICES/api/v1/db/savestudent", String.class);
-		return teacherTemp;
-	}
-
-	@GetMapping("/test3")
-	public List<Student> test3(){
-
-		Student[] students = restTemplate.getForObject("http://DB-SERVICES/api/v1/db/allstudents", Student[].class);
-		return Arrays.asList(students);
+	public String allCourse(){
+		String allCourses = restTemplate.getForObject(dbRoot+"allcourses", String.class);
+		return allCourses;
 	}
 }

@@ -1,6 +1,11 @@
-server:
-  port: 8084
-
 spring:
   application:
     name: course-services
+server:
+  port: 8084
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URI:http://192.168.8.116:7000/regserver/eureka}
+  instance:
+    preferIpAddress: true
