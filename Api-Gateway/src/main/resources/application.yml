@@ -1,0 +1,36 @@
+server:
+  port: 9095
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: MANAGEMENT-SERVICES
+          uri: lb://MANAGEMENT-SERVICES
+          predicates:
+            - Path=/api/v1/management/**
+        - id: DB-SERVICES
+          uri: lb://DB-SERVICES
+          predicates:
+            - Path=/api/v1/db/**
+        - id: COURSE-SERVICES
+          uri: lb://COURSE-SERVICES
+          predicates:
+            - Path=/api/v1/course/**
+        - id: STUDENT-SERVICES
+          uri: lb://STUDENT-SERVICES
+          predicates:
+            - Path=/api/v1/student/**
+        - id: TEACHER-SERVICES
+          uri: lb://TEACHER-SERVICES
+          predicates:
+            - Path=/api/v1/teacher/**
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URI:http://192.168.8.116:7000/regserver/eureka}
+  instance:
+    preferIpAddress: true

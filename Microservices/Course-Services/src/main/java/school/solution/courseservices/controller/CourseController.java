@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1//course")
+@RequestMapping("api/v1/course")
 public class CourseController {
 
 	private String dbRoot = "http://DB-SERVICES/api/v1/db/";
