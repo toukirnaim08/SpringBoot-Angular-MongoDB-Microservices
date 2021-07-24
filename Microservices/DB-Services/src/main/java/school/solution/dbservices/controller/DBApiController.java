@@ -16,6 +16,8 @@ import school.solution.dbservices.service.InstructorService;
 import school.solution.dbservices.service.NoticeService;
 import school.solution.dbservices.service.StudentService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/db")
 public class DBApiController {
@@ -48,10 +50,9 @@ public class DBApiController {
 	}
 
 	@GetMapping("/allstudents")
-	public String getAllStudent()
+	public List<Student> getAllStudent()
 	{
-
-		return this.studentService.allStudent().toString();
+		return this.studentService.allStudent();
 	}
 
 	@GetMapping("/savecourse")

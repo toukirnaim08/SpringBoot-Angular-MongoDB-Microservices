@@ -1,14 +1,13 @@
-package school.solution.dbservices;
-
+package school.solution.teacherservices;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DbServicesApplication {
+public class TeacherServicesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DbServicesApplication.class, args);
+		SpringApplication.run(TeacherServicesApplication.class, args);
 	}
 
 }
