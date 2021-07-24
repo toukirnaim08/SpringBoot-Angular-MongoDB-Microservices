@@ -1,7 +1,9 @@
 server:
-  port: 8761
+  port: 7000
+  servlet:
+    context-path: /regserver
 
 eureka:
   client:
-    fetch-registry: false
     register-with-eureka: false
+    fetch-registry: false
