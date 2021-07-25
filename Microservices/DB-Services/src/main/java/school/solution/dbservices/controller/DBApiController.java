@@ -1,8 +1,11 @@
 package school.solution.dbservices.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 import school.solution.dbservices.dto.CourseDto;
 import school.solution.dbservices.dto.InstructorDto;
 import school.solution.dbservices.dto.NoticeDto;
@@ -26,6 +29,12 @@ public class DBApiController {
 	private CourseService courseService;
 	private NoticeService noticeService;
 	private InstructorService instructorService;
+
+	@Autowired
+	private RestTemplate restTemplate;
+
+	@Autowired
+	private CircuitBreakerFactory cbFactory;
 
 	public DBApiController(StudentService studentService, CourseService courseServic,
 						   NoticeService noticeService,InstructorService instructorService) {

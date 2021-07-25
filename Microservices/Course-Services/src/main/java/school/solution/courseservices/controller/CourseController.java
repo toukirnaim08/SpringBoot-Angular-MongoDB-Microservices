@@ -1,6 +1,7 @@
 package school.solution.courseservices.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,19 +15,23 @@ import java.util.List;
 public class CourseController {
 
 	private String dbRoot = "http://DB-SERVICES/api/v1/db/";
+	private String serverDownMsg = "DB-Server down, please try again later";
 
 	@Autowired
 	private RestTemplate restTemplate;
 
+	@Autowired
+	private CircuitBreakerFactory cbFactory;
+
 	@GetMapping("/save")
 	public String saveCourse(){
-		String course = restTemplate.getForObject(dbRoot+"savecourse", String.class);
-		return course;
+		return cbFactory.create("slow").run(() -> restTemplate.getForObject(dbRoot + "savecourse",
+				String.class), throwable -> serverDownMsg);
 	}
 
 	@GetMapping("/all")
 	public String allCourse(){
-		String allCourses = restTemplate.getForObject(dbRoot+"allcourses", String.class);
-		return allCourses;
+		return cbFactory.create("slow").run(() -> restTemplate.getForObject(dbRoot + "allcourses",
+				String.class), throwable -> serverDownMsg);
 	}
 }

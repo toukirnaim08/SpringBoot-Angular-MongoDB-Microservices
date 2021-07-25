@@ -9,3 +9,13 @@ eureka:
       defaultZone: ${EUREKA_URI:http://192.168.8.116:7000/regserver/eureka}
   instance:
     preferIpAddress: true
+resilience4j:
+  circuitbreaker:
+    circuit-breaker-aspect-order: 398
+    instances:
+      cbA:
+        ringBufferSizeInHalfOpenState: 3 # When the circuit breaker is in the HalfOpen state, the size of the ring buffer
+        ringBufferSizeInClosedState: 5 # When the circuit breaker is in the Closed state, the size of the ring buffer
+        waitInterval: 5000
+        recordExceptions:
+          - org.springframework.web.client.HttpServerErrorException
