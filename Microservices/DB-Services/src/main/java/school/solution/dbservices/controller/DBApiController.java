@@ -59,9 +59,9 @@ public class DBApiController {
 	}
 
 	@GetMapping("/allstudents")
-	public List<Student> getAllStudent()
+	public String getAllStudent()
 	{
-		return this.studentService.allStudent();
+		return this.studentService.allStudent().toString();
 	}
 
 	@GetMapping("/savecourse")
