@@ -3,12 +3,6 @@ spring:
     name: management-services
 server:
   port: 8085
-eureka:
-  client:
-    service-url:
-      defaultZone: ${EUREKA_URI:http://192.168.8.116:7000/regserver/eureka}
-  instance:
-    preferIpAddress: true
 
 resilience4j:
   circuitbreaker:

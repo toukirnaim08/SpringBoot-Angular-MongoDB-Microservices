@@ -3,12 +3,7 @@ spring:
     name: course-services
 server:
   port: 8084
-eureka:
-  client:
-    service-url:
-      defaultZone: ${EUREKA_URI:http://192.168.8.116:7000/regserver/eureka}
-  instance:
-    preferIpAddress: true
+
 resilience4j:
   circuitbreaker:
     circuit-breaker-aspect-order: 398

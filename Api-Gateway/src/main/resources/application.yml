@@ -26,14 +26,6 @@ spring:
           uri: lb://TEACHER-SERVICES
           predicates:
             - Path=/api/v1/teacher/**
-
-
-eureka:
-  client:
-    service-url:
-      defaultZone: ${EUREKA_URI:http://192.168.8.116:7000/regserver/eureka}
-  instance:
-    preferIpAddress: true
 management:
   endpoints:
     web:
