@@ -1,21 +1,17 @@
 
 <ng-sidebar-container>
   <ng-sidebar [opened]="opened">
-    <p>
-      sidebar contents
-    </p>
     <button (click)="toggleSidebar()">close</button>
-
     <ul>
-      <li><a routerLink="/" (click)="toggleSidebar()">Dashboard</a></li>
-      <li><a routerLink="/student" (click)="toggleSidebar()">Events</a></li>
-      <li><a routerLink="/profiles" (click)="toggleSidebar()">profiles</a></li>
+      <li><a routerLink="/" (click)="toggleSidebar()">Home</a></li>
+      <li><a routerLink="/student" (click)="toggleSidebar()">Student</a></li>
+      <li><a routerLink="/course" (click)="toggleSidebar()">Course</a></li>
+      <li><a routerLink="/teacher" (click)="toggleSidebar()">Teacher</a></li>
+      <li><a routerLink="/management" (click)="toggleSidebar()">Management</a></li>
     </ul>
   </ng-sidebar>
   <div ng-sidebar-content>
-    <button (click) = "toggleSidebar()">
-      open sidebar
-    </button>
+    <button (click) = "toggleSidebar()">open sidebar</button>
     <router-outlet></router-outlet>
   </div>
 </ng-sidebar-container>

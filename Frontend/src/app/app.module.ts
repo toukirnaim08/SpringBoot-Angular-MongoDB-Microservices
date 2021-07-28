@@ -9,6 +9,7 @@ import { StudentComponent } from './component/student/student.component';
 import { CourseComponent } from './component/course/course.component';
 import { TeacherComponent } from './component/teacher/teacher.component';
 import { ManagementComponent } from './component/management/management.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ManagementComponent } from './component/management/management.component
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SidebarModule.forRoot()
+    SidebarModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

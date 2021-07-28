@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DbService } from 'src/app/service/db.service';
+
 
 @Component({
   selector: 'app-home',
@@ -6,22 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  tempTitle = "tempTitle";
-  isOpened = false;
-
-  constructor() { 
+  
+  constructor(private dbService:DbService) { 
 
   }
 
   ngOnInit(): void {
-  }
-  toggleSidebar(){
-    this.isOpened = !this.isOpened;
-    console.log(this.isOpened);
-  }
 
-  checkLog(){
-    console.log("tempClicking");
   }
+  dbResponse(){
+    //console.log("checked");
+    this.dbService.getAllStudentsData();
+  }
+  
 
 }
